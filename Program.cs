@@ -17,8 +17,8 @@ namespace CoreBot
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://0.0.0.0:80/")
                 .Build();
 
             host.Run();

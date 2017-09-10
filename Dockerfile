@@ -10,7 +10,8 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 
 # build runtime image
-FROM microsoft/aspnetcore:2.0
+FROM microsoft/dotnet:2.0.0-runtime-jessie
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "out/CoreBot.dll"]
+EXPOSE 80
+ENTRYPOINT ["dotnet", "CoreBot.dll"]
